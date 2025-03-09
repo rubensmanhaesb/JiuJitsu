@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  sqlserver_jiujitsu:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_jiujitsu
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Rubens2024!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - mynetwork
+
+  mongodb_jiujitsu:
+    image: mongo:latest
+    container_name: mongodb_jiujitsu
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+    volumes:
+      - mongodb_data:/data/db
+
+  rabbitmq_jiujitsu:
+    image: rabbitmq:management
+    container_name: rabbitmq_jiujitsu
+    ports:
+      - "5672:5672"   
+      - "15672:15672" 
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - mynetwork
+
+      
+volumes:
+  sqlserver_data:
+  mongodb_data:
+
+networks:
+  mynetwork:
+    driver: bridge

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers\Requests\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RMB\RMB.Abstractions\RMB.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\RMB\RMB.Core\RMB.Core.csproj" />
+    <ProjectReference Include="..\CRM.API\CRM.Domain\CRM.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
