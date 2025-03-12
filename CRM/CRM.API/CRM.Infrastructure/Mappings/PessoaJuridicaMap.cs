@@ -23,7 +23,7 @@ namespace CRM.Infrastructure.Data.Mappings
             //campos de pessoa jurídica
             builder.Property(p => p.RazaoSocial).IsRequired().HasMaxLength(100);
             builder.Property(p => p.NomeFantasia).IsRequired().HasMaxLength(100);
-            builder.Property(p => p.Cnpj).IsRequired().HasMaxLength(14);
+            builder.Property(p => p.Cnpj).IsRequired().HasMaxLength(18);
 
             builder.HasDiscriminator<string>("TipoPessoa")
                 .HasValue<PessoaJuridica>("PessoaJuridica");

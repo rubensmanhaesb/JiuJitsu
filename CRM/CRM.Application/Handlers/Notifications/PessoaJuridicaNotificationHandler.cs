@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+
 
 namespace CRM.Application.Handlers.Notifications
 {
-    public class PessoaJuridicaNotificationHandler
+    public class PessoaJuridicaNotificationHandler : INotificationHandler<PessoaJuridicaNotification>
     {
+        public Task Handle(PessoaJuridicaNotification notification, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

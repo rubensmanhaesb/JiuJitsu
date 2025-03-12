@@ -31,8 +31,8 @@ namespace CRM.Infrastructure.Data.Migrations
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("nvarchar(14)");
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
 
                     b.Property<string>("Email")
                         .IsRequired()

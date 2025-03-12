@@ -2,11 +2,7 @@
 using CRM.Domain.Entities;
 using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;  
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CRM.Application.Mappings
 {
@@ -21,8 +17,12 @@ namespace CRM.Application.Mappings
                 });
 
             CreateMap<PessoaJuridicaUpdateCommand, PessoaJuridica>();
+            
+            CreateMap<PessoaJuridicaDeleteCommand, PessoaJuridica>();
 
             CreateMap<PessoaJuridica, PessoaJuridicaDto>();
+
+
         }
     }
 }

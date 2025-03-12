@@ -1,5 +1,4 @@
 ﻿using CRM.Infrastructure.Data.Context;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,8 +15,8 @@ namespace CRM.Infrastructure.Data.Extensions
 
         public static IServiceCollection AddDatabaseConnection(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton(provider =>
-                new SqlConnection(configuration.GetConnectionString("DefaultConnection")));
+     //       services.AddSingleton(provider =>
+       //         new SqlConnection(configuration.GetConnectionString("DefaultConnection")));
 
             return services;
         }

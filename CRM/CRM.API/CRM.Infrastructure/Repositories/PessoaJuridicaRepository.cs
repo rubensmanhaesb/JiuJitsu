@@ -1,6 +1,7 @@
 ﻿using CRM.Domain.Entities;
 using CRM.Domain.Interfaces.Repositories;
 using CRM.Infrastructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using RMB.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace CRM.Infrastructure.Data.Repositories
         BaseRepository<PessoaJuridica>,
         IPessoaJuridicaRepository
     {
-        public PessoaJuridicaRepository(DataContext context) : base(context)
+        public PessoaJuridicaRepository(DbContext context) : base(context)
         {
         }
 

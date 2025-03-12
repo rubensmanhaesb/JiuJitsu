@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250309020348_Initial")]
+    [Migration("20250311132933_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,8 +34,8 @@ namespace CRM.Infrastructure.Data.Migrations
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("nvarchar(14)");
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
 
                     b.Property<string>("Email")
                         .IsRequired()
