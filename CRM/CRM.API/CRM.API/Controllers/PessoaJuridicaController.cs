@@ -2,6 +2,8 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using Serilog.Context;
 
 namespace CRM.API.Controllers
 {
@@ -9,10 +11,13 @@ namespace CRM.API.Controllers
     [ApiController]
     public class PessoaJuridicaController : ControllerBase
     {
-        public readonly IPessoaJuridicaApplicationService? _pessoaJuridicaApplicationService;
+        private readonly IPessoaJuridicaApplicationService? _pessoaJuridicaApplicationService;
 
         public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService)
-            => _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
+        {
+            _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
+
+        }
         
 
         [HttpPost]
@@ -46,6 +51,7 @@ namespace CRM.API.Controllers
         [ProducesResponseType(204)]
         public async Task<IActionResult> GetAll()
             => Ok(await _pessoaJuridicaApplicationService!.GetAllAsync());
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(PessoaJuridicaDto), 200)]

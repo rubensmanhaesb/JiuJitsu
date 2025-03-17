@@ -1,11 +1,7 @@
 ﻿using CRM.Domain.Entities;
 using FluentValidation;
 using RMB.Core.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CRM.Domain.Validators
 {
