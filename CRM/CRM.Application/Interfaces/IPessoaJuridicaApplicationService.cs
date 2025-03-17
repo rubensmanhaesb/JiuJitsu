@@ -1,6 +1,6 @@
 ﻿using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;
-using RMB.Abstractions.Applications;
+using RMB.Abstractions.UseCases;
 
 
 namespace CRM.Application.Interfaces
