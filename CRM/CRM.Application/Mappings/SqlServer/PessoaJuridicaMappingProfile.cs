@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using CRM.Domain.Entities;
 using CRM.Application.Commands;
-using CRM.Application.Dtos.PessoaJuridica;  
+using CRM.Application.Dtos.PessoaJuridica;
 
 
-namespace CRM.Application.Mappings
+namespace CRM.Application.Mappings.SqlServer
 {
     public class PessoaJuridicaMappingProfile : Profile
     {

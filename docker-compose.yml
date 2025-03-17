@@ -17,6 +17,9 @@ services:
   mongodb_jiujitsu:
     image: mongo:latest
     container_name: mongodb_jiujitsu
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=Rubens2024!    
     ports:
       - "27017:27017"
     networks:

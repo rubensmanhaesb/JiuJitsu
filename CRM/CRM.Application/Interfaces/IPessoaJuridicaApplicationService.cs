@@ -1,17 +1,13 @@
 ﻿using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;
-using RMB.Abstractions.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RMB.Abstractions.Applications;
+
 
 namespace CRM.Application.Interfaces
 {
-    public interface IPessoaJuridicaApplicationService
+    public interface IPessoaJuridicaApplicationService  
     {
-        Task<PessoaJuridicaDto> CreateAsync(PessoaJuridicaCreateCommand command);
+        Task<PessoaJuridicaDto> AddAsync(PessoaJuridicaCreateCommand command);
         Task<PessoaJuridicaDto> UpdateAsync(PessoaJuridicaUpdateCommand command);
         Task<PessoaJuridicaDto> DeleteAsync(PessoaJuridicaDeleteCommand command);
         Task<List<PessoaJuridicaDto>?> GetAllAsync();

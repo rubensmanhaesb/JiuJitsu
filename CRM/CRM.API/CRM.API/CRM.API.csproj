@@ -11,6 +11,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Scalar.AspNetCore" Version="2.0.30" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -18,6 +20,8 @@
     <ProjectReference Include="..\..\..\..\RMB\RMB.Abstractions\RMB.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\..\RMB\RMB.Responses\RMB.Responses.csproj" />
     <ProjectReference Include="..\..\CRM.Application\CRM.Application.csproj" />
+    <ProjectReference Include="..\..\CRM.Domani.MongoDB\CRM.Domain.MongoDB.csproj" />
+    <ProjectReference Include="..\..\CRM.Infrastructure.Storage\CRM.Infrastructure.Storage.csproj" />
     <ProjectReference Include="..\CRM.Domain\CRM.Domain.csproj" />
     <ProjectReference Include="..\CRM.Infrastructure\CRM.Infrastructure.Data.csproj" />
   </ItemGroup>

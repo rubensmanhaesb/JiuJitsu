@@ -19,7 +19,7 @@ namespace CRM.API.Controllers
         [ProducesResponseType(typeof(PessoaJuridicaDto), 201)]
         public async Task<IActionResult> Post(PessoaJuridicaCreateCommand command)
         {
-            var dto = await _pessoaJuridicaApplicationService!.CreateAsync(command);
+            var dto = await _pessoaJuridicaApplicationService!.AddAsync(command);
             return StatusCode(201, dto);
         }
 

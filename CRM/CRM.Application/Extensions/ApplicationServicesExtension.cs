@@ -1,4 +1,5 @@
-﻿using CRM.Application.Interfaces;
+﻿using CRM.Application.Handlers.Notifications;
+using CRM.Application.Interfaces;
 using CRM.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,8 @@ namespace CRM.Application.Extensions
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddTransient<IPessoaJuridicaApplicationService, PessoaJuridicaApplicationService>();
+            
+
 
             return services;
         }

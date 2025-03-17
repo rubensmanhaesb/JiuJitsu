@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;
+using CRM.Application.Handlers.Notifications;
 using CRM.Domain.Entities;
 using CRM.Domain.Interfaces.Services;
 using MediatR;
+using RMB.Core.Notifications;
+using System.Diagnostics;
 
 namespace CRM.Application.Handlers.Requests
 {
@@ -26,6 +29,14 @@ namespace CRM.Application.Handlers.Requests
             var pessoaJuridicaResponse =  await _pessoaJuridicaDomainService.AddAsync(pessoaJuridica);
 
             var pessoaJuridicaDto = _mapper.Map<PessoaJuridicaDto>(pessoaJuridicaResponse);
+            Debug.WriteLine("📢 Publicando notificação PessoaJuridicaNotification...");
+
+            await _mediator.Publish(new PessoaJuridicaNotification
+            {
+                PessoaJuridicaDto = pessoaJuridicaDto,
+                Action = NotificationAction.Created
+            });
+
 
             return pessoaJuridicaDto;
         }

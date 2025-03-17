@@ -1,9 +1,9 @@
-﻿using RMB.Abstractions.Dtos;
-
+﻿
 namespace CRM.Application.Dtos.PessoaJuridica
 {
-    public class PessoaDto : Dto<Guid>
+    public class PessoaDto 
     {
+        public Guid Id { get; set; }
         public string Email { get; set; }
     }
 }

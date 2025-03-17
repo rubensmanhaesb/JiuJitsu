@@ -2,11 +2,15 @@
 using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
+using CRM.Domain.Entities;
 using CRM.Domain.Interfaces.Services;
 using MediatR;
+using RMB.Core.Application;
+using RMB.Core.Domains;
 
 namespace CRM.Application.Services
 {
+    /*
     public class PessoaJuridicaApplicationService : IPessoaJuridicaApplicationService
     {
         private readonly IPessoaJuridicaDomainService _pessoaJuridicaDomainService;
@@ -33,19 +37,31 @@ namespace CRM.Application.Services
 
         public async Task<List<PessoaJuridicaDto>?> GetAllAsync()
         {
-            var response = _pessoaJuridicaDomainService.GetAllAsync().Result;
-            var result = _mapper.Map<List<PessoaJuridicaDto>>(response);
+            var lista = _pessoaJuridicaDomainService.GetAllAsync().Result;
+            var result = _mapper.Map<List<PessoaJuridicaDto>>(lista);
 
             return result;
         }
 
         public async Task<PessoaJuridicaDto?> GetByIdAsync(Guid id)
         {
-            var response = await _pessoaJuridicaDomainService.GetByIdAsync(id);
-            var result = _mapper.Map<PessoaJuridicaDto>(response);
+            var pessoaJuridicaDto = await _pessoaJuridicaDomainService.GetByIdAsync(id);
+            var result = _mapper.Map<PessoaJuridicaDto>(pessoaJuridicaDto);
 
             return result;
         }
         
     }
+    */
+    public class PessoaJuridicaApplicationService : BaseMediatorApplication<PessoaJuridicaCreateCommand, PessoaJuridicaUpdateCommand, PessoaJuridicaDeleteCommand, PessoaJuridicaDto, PessoaJuridica>,
+        IPessoaJuridicaApplicationService
+    {
+        public PessoaJuridicaApplicationService(IPessoaJuridicaDomainService  baseDomain, IMediator mediator, IMapper mapper) : base((BaseDomain<PessoaJuridica>) baseDomain, mediator, mapper)
+        {
+        }
+
+
+    }
+
 }
+    
