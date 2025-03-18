@@ -5,8 +5,11 @@ using CRM.Infrastructure.Storage.Extensions;
 using CRM.Domain.MongoDB.Extensions;
 using Scalar.AspNetCore;
 using Serilog;
-using RMB.Responses.Logs.Extensions.Logs;
+
 using RMB.Responses.Middlewares.Controllers;
+using RMB.Core.Extensions;
+using RMB.Core.Logs.Extensions;
+using RMB.Core.Logs.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -16,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 #region Services Extensions 
+builder.Services.AddCoreExtensions();
 builder.Services.AddDataContext(builder.Configuration);
 builder.Services.AddDomainServices();
 builder.Services.AddApplicationServices();
@@ -38,8 +42,9 @@ if (app.Environment.IsDevelopment())
 }
 
 #region Middlewares
+app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<ResponseMiddleware>();
-
 //app.UseMiddleware<ExceptionMiddleware>();
 #endregion
 
