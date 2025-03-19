@@ -2,8 +2,7 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using Serilog.Context;
+
 
 namespace CRM.API.Controllers
 {
