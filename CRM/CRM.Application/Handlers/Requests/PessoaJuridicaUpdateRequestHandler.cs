@@ -5,7 +5,7 @@ using CRM.Application.Handlers.Notifications;
 using CRM.Domain.Entities;
 using CRM.Domain.Interfaces.Services;
 using MediatR;
-using RMB.Core.Notifications;
+using RMB.Abstractions.Notifications;
 
 
 namespace CRM.Application.Handlers.Requests

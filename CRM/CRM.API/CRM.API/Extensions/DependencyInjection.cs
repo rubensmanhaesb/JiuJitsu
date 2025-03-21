@@ -7,9 +7,9 @@ using CRM.Infrastructure.Storage.Extensions;
 using CRM.Domain.MongoDB.Extensions;
 using RMB.Core.Extensions;
 
-namespace CRM.API.Extensions.Configurations
+namespace CRM.API.Extensions
 {
-    public static class ServiceConfig
+    public static class DependencyInjection
     {
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {

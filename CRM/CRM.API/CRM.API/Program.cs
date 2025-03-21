@@ -1,4 +1,4 @@
-﻿using CRM.API.Extensions.Configurations;
+﻿using CRM.API.Extensions;
 using RMB.Core.Logs.Extensions;
 using RMB.Core.Logs.Lifecycle;
 using Serilog;
@@ -9,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddCustomLogging("DelaRiva");
 #endregion
 
-ServiceConfig.ConfigureServices(builder.Services, builder.Configuration);
+DependencyInjection.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
-MiddlewareConfig.ConfigureMiddlewares(app);
+MiddlewarePipeline.ConfigureMiddlewares(app);
 
 AppLifecycle.ConfigureApplicationLifetime(app);
 

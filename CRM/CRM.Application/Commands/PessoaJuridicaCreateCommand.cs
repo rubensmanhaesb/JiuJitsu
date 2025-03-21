@@ -1,5 +1,6 @@
 ﻿using CRM.Application.Dtos.PessoaJuridica;
 using MediatR;
+using RMB.Core.Validation.DataAnnotation;
 using System.ComponentModel.DataAnnotations;
 
 namespace CRM.Application.Commands
@@ -19,6 +20,7 @@ namespace CRM.Application.Commands
         [Required(ErrorMessage = "CNPJ é obrigatório.")]
         [RegularExpression(@"^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$",
             ErrorMessage = "CNPJ deve estar no formato XX.XXX.XXX/XXXX-XX")]
+        [CNPJ(ErrorMessage = "CNPJ inválido.")]
         public string? Cnpj { get; set; }
 
         [Required(ErrorMessage = "Email é obrigatório.")]
