@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using CRM.Infrastructure.Data.Extensions;
+﻿using CRM.Infrastructure.Data.Extensions;
 using CRM.Domain.Extensions;
 using CRM.Application.Extensions;
 using CRM.Infrastructure.Storage.Extensions;
@@ -25,7 +23,9 @@ namespace CRM.API.Extensions
             services.AddApplicationServices();
             services.AddMongoDb(configuration);
             services.AddDomainMongoDb();
+            services.AddCorsConfig(configuration);
             #endregion 
+
         }
     }
 }

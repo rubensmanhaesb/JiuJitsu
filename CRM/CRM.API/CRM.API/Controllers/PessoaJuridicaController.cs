@@ -2,6 +2,7 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using RMB.Abstractions.Shared.Contracts.Requests;
 
 
 namespace CRM.API.Controllers
@@ -17,7 +18,6 @@ namespace CRM.API.Controllers
             _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
 
         }
-        
 
         [HttpPost]
         [ProducesResponseType(typeof(PessoaJuridicaDto), 201)]
@@ -52,13 +52,27 @@ namespace CRM.API.Controllers
             => Ok(await _pessoaJuridicaApplicationService!.GetAllAsync());
 
 
+        [HttpGet("paginated")]
+        [ProducesResponseType(typeof(List<PessoaJuridicaDto>), 200)]
+        [ProducesResponseType(204)]
+        public async Task<IActionResult> GetAllPaginated([FromQuery] PaginationRequest pagination, CancellationToken cancellationToken = default)
+        {
+
+            var resultado = await _pessoaJuridicaApplicationService.GetPaginatedAsync<PessoaJuridicaDto>(
+                predicate: null,
+                paginationRequest: pagination,
+                cancellationToken: cancellationToken
+            );
+
+            return Ok(resultado);
+
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(PessoaJuridicaDto), 200)]
         [ProducesResponseType(204)]
         public async Task<IActionResult> GetByIdAsync(Guid id)
             => Ok(await _pessoaJuridicaApplicationService.GetByIdAsync(id));
-
-        
 
     }
 }

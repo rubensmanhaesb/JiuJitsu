@@ -24,6 +24,10 @@ namespace CRM.API.Extensions
             app.UseMiddleware<ValidationExceptionMiddleware>();
             #endregion
 
+            #region App Extensions
+            app.UseCorsConfig(); //precisa ser chamado antes mapcontrollers
+            #endregion App Extensions
+
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();

@@ -13,9 +13,12 @@ DependencyInjection.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
-MiddlewarePipeline.ConfigureMiddlewares(app);
 
+
+MiddlewarePipeline.ConfigureMiddlewares(app);
 AppLifecycle.ConfigureApplicationLifetime(app);
+
+
 
 try
 {
