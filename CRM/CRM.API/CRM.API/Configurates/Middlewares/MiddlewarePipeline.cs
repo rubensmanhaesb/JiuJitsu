@@ -21,7 +21,7 @@ namespace CRM.API.Configurates.Middlewares
             app.UseMiddleware<CorrelationIdMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseMiddleware<RequestResponseLoggingMiddleware>();
-            app.UseMiddleware<ResponseMiddleware>();
+            //app.UseMiddleware<ResponseMiddleware>();
             app.UseMiddleware<ValidationExceptionMiddleware>();
             #endregion
 

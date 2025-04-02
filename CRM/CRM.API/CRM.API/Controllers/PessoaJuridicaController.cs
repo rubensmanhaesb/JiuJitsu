@@ -19,7 +19,7 @@ namespace CRM.API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(PessoaJuridicaDto), 201)]
+        [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status201Created)]
         public async Task<IActionResult> Post(PessoaJuridicaCreateCommand command, CancellationToken cancellationToken = default)
         {
             var dto = await _pessoaJuridicaApplicationService!.AddAsync(command, cancellationToken);
@@ -27,7 +27,7 @@ namespace CRM.API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(PessoaJuridicaDto), 200)]
+        [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> Put(PessoaJuridicaUpdateCommand command, CancellationToken cancellationToken = default)
         {
             var dto = await _pessoaJuridicaApplicationService!.UpdateAsync(command, cancellationToken);
@@ -35,7 +35,7 @@ namespace CRM.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(PessoaJuridicaDto), 200)]
+        [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
             var command = new PessoaJuridicaDeleteCommand { Id = id };
@@ -45,15 +45,13 @@ namespace CRM.API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<PessoaJuridicaDto>), 200)]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(List<PessoaJuridicaDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken = default)
             => Ok(await _pessoaJuridicaApplicationService!.GetAllAsync(cancellationToken));
 
 
         [HttpGet("paginated")]
-        [ProducesResponseType(typeof(List<PessoaJuridicaDto>), 200)]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(List<PessoaJuridicaDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllPaginated([FromQuery] PaginationRequest pagination, CancellationToken cancellationToken = default)
         {
 
@@ -68,10 +66,9 @@ namespace CRM.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(PessoaJuridicaDto), 200)]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
-            => Ok(await _pessoaJuridicaApplicationService.GetByIdAsync(id, cancellationToken));
+            =>Ok(await _pessoaJuridicaApplicationService.GetByIdAsync(id, cancellationToken));
 
     }
 }

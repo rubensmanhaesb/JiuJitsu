@@ -1,5 +1,6 @@
 ﻿using CRM.API.Configurates.Middlewares;
 using CRM.API.Configurates.Services;
+using RMB.Core.Controllers;
 using RMB.Core.Logs.Extensions;
 using RMB.Core.Logs.Services;
 using Serilog;
@@ -10,7 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddCustomLogging("DelaRiva");
 #endregion
 
-builder.Services.AddControllers();
+
+
+builder.Services.AddControllers(options =>
+    {
+        options.Filters.Add<AutoNoContentAttribute>(); // Aplica a TODAS as controllers  
+    });
+
 builder.Services.AddRouting(config => config.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
