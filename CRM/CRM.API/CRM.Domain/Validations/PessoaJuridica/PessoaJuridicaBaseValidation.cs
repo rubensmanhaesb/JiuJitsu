@@ -1,6 +1,6 @@
 ﻿using CRM.Domain.Interfaces.Repositories;
 using FluentValidation;
-using RMB.Core.Validation.Helpers;
+using RMB.Core.ValuesObjects.CNPJ.Helpers;
 using Empresa = CRM.Domain.Entities.PessoaJuridica;
 
 namespace CRM.Domain.Validations.PessoaJuridica

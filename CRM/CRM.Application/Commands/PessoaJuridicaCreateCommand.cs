@@ -1,6 +1,6 @@
 ﻿using CRM.Application.Dtos.PessoaJuridica;
 using MediatR;
-using RMB.Core.Validation.DataAnnotation;
+using RMB.Core.ValuesObjects.CNPJ.DataAnnotation;
 using System.ComponentModel.DataAnnotations;
 
 namespace CRM.Application.Commands
