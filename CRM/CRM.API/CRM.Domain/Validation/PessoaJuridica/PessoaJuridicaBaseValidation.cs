@@ -48,7 +48,7 @@ namespace CRM.Domain.Validation.PessoaJuridica
         private async Task<bool> IsExistsIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var existente = await _unitOfWork.PessoaJuridicaRepository
-                .GetByIdAsync(id);
+                .GetByIdAsync(id, cancellationToken);
             
             return existente is not null;
         }
@@ -56,14 +56,14 @@ namespace CRM.Domain.Validation.PessoaJuridica
         private async Task<bool> IsUniqueCnpjAsync(Guid id, string cnpj, CancellationToken cancellationToken)
         {
             var existente = await _unitOfWork.PessoaJuridicaRepository
-                .GetOneByAsync(p => p.Cnpj == cnpj && p.Id != id);
+                .GetOneByAsync(p => p.Cnpj == cnpj && p.Id != id, cancellationToken);
             return existente is null;
         }
 
         private async Task<bool> IsUniqueEmailAsync(Guid id, string email, CancellationToken cancellationToken)
         {
             var existente = await _unitOfWork.PessoaJuridicaRepository
-                .GetOneByAsync(p => p.Email == email && p.Id != id);
+                .GetOneByAsync(p => p.Email == email && p.Id != id, cancellationToken);
             return existente is null;
         }
     }

@@ -26,16 +26,15 @@ namespace CRM.Application.Handlers.Requests
         public async Task<PessoaJuridicaDto> Handle(PessoaJuridicaCreateCommand request, CancellationToken cancellationToken)
         {
             var pessoaJuridica = _mapper.Map<PessoaJuridica>(request);
-            var pessoaJuridicaResponse =  await _pessoaJuridicaDomainService.AddAsync(pessoaJuridica);
+            var pessoaJuridicaResponse =  await _pessoaJuridicaDomainService.AddAsync(pessoaJuridica, cancellationToken);
 
             var pessoaJuridicaDto = _mapper.Map<PessoaJuridicaDto>(pessoaJuridicaResponse);
-            Debug.WriteLine("📢 Publicando notificação PessoaJuridicaNotification...");
 
             await _mediator.Publish(new PessoaJuridicaNotification
             {
                 PessoaJuridicaDto = pessoaJuridicaDto,
                 Action = NotificationAction.Created
-            });
+            }, cancellationToken);
 
 
             return pessoaJuridicaDto;

@@ -29,20 +29,20 @@ namespace CRM.Domain.Services
             _pessoaJuridicaRepository = repository;
         }
 
-        public override async Task<PessoaJuridica> AddAsync(PessoaJuridica entity)
+        public override async Task<PessoaJuridica> AddAsync(PessoaJuridica entity, CancellationToken cancellationToken)
         {
             await (new PessoaJuridicaAddValidation(_unitOfWork)).ValidateAndThrowAsync(entity);
-            return await base.AddAsync(entity);
+            return await base.AddAsync(entity, cancellationToken);
         }
-        public override async Task<PessoaJuridica> UpdateAsync(PessoaJuridica entity)
+        public override async Task<PessoaJuridica> UpdateAsync(PessoaJuridica entity, CancellationToken cancellationToken)
         {
             await (new PessoaJuridicaUpdateValidation(_unitOfWork)).ValidateAndThrowAsync(entity);
-            return await base.UpdateAsync(entity);
+            return await base.UpdateAsync(entity, cancellationToken);
         }
-        public override async Task<PessoaJuridica> DeleteAsync(PessoaJuridica entity)
+        public override async Task<PessoaJuridica> DeleteAsync(PessoaJuridica entity, CancellationToken cancellationToken)
         {
             await (new PessoaJuridicaDeleteValidation(_unitOfWork)).ValidateAndThrowAsync(entity);
-            return await base.DeleteAsync(entity);
+            return await base.DeleteAsync(entity, cancellationToken);
         }
 
     }

@@ -27,7 +27,7 @@ namespace CRM.Application.Handlers.Requests
         {
             var pessoaJuridica = _mapper.Map<PessoaJuridica>(request);
 
-            var pessoaJuridicaResponse = await _pessoaJuridicaDomainService.UpdateAsync(pessoaJuridica);
+            var pessoaJuridicaResponse = await _pessoaJuridicaDomainService.UpdateAsync(pessoaJuridica, cancellationToken);
 
             var pessoaJuridicaDto = _mapper.Map<PessoaJuridicaDto>(pessoaJuridicaResponse);
 
@@ -35,7 +35,7 @@ namespace CRM.Application.Handlers.Requests
             {
                 PessoaJuridicaDto = pessoaJuridicaDto,
                 Action = NotificationAction.Updated
-            });
+            }, cancellationToken);
 
             return pessoaJuridicaDto;
         }
