@@ -22,7 +22,7 @@ var app = builder.Build();
 
 
 MiddlewarePipeline.ConfigureMiddlewares(app);
-AppLifecycle.ConfigureApplicationLifetime(app);
+AppLifecycleService.ConfigureApplicationLifetime(app);
 
 
 
