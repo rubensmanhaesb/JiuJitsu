@@ -1,7 +1,7 @@
 ﻿using CRM.API.Configurates.Middlewares;
 using CRM.API.Configurates.Services;
 using RMB.Core.Logs.Extensions;
-using RMB.Core.Logs.Lifecycle;
+using RMB.Core.Logs.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

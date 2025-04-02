@@ -1,17 +1,10 @@
 ﻿using CRM.Domain.Entities;
 using CRM.Domain.Interfaces.Repositories;
 using CRM.Domain.Interfaces.Services;
-using CRM.Domain.Validation.PessoaJuridica;
+using CRM.Domain.Validations.PessoaJuridica;
 using FluentValidation;
-using RMB.Abstractions.Domains;
-using RMB.Abstractions.Entities;
 using RMB.Core.Domains;
 using RMB.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRM.Domain.Services
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Domain.Validation.PessoaJuridica
+namespace CRM.Domain.Validations.PessoaJuridica
 {
     public class PessoaJuridicaDeleteValidation : PessoaJuridicaBaseValidation
     {

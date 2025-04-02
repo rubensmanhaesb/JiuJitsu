@@ -1,8 +1,7 @@
 ﻿using CRM.Domain.Interfaces.Services;
 using CRM.Domain.Services;
-using CRM.Domain.Validation.PessoaJuridica;
+using CRM.Domain.Validations.PessoaJuridica;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 

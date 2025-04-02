@@ -3,7 +3,7 @@ using FluentValidation;
 using RMB.Core.Validation.Helpers;
 using Empresa = CRM.Domain.Entities.PessoaJuridica;
 
-namespace CRM.Domain.Validation.PessoaJuridica
+namespace CRM.Domain.Validations.PessoaJuridica
 {
     public class PessoaJuridicaBaseValidation : AbstractValidator<Empresa>
     {

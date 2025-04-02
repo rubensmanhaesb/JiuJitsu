@@ -1,7 +1,7 @@
 ﻿using CRM.Domain.Interfaces.Repositories;
 
 
-namespace CRM.Domain.Validation.PessoaJuridica
+namespace CRM.Domain.Validations.PessoaJuridica
 {
     public class PessoaJuridicaAddValidation : PessoaJuridicaBaseValidation
     {
