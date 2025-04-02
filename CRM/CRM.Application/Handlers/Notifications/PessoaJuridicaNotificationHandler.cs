@@ -3,7 +3,6 @@ using CRM.Domain.MongoDB.Collection.Logs;
 using CRM.Domain.MongoDB.Interfaces.Services;
 using MediatR;
 using RMB.Abstractions.Notifications;
-using System.Diagnostics;
 
 
 namespace CRM.Application.Handlers.Notifications
@@ -21,7 +20,6 @@ namespace CRM.Application.Handlers.Notifications
 
         public async Task Handle(PessoaJuridicaNotification notification, CancellationToken cancellationToken)
         {
-            Debug.WriteLine("Notificação recebida em PessoaJuridicaNotificationHandler...");
             var pessoaJuridicaCollection = _mapper.Map<PessoaJuridicaCollection>(notification.PessoaJuridicaDto);
 
             switch (notification.Action)
