@@ -1,9 +1,10 @@
-﻿using RMB.Core.Logs.Middleware;
+﻿using CRM.API.Extensions;
+using RMB.Core.Logs.Middleware;
 using RMB.Core.Validation.Middleware;
 using RMB.Responses.Middlewares.Controllers;
 using Scalar.AspNetCore;
 
-namespace CRM.API.Extensions
+namespace CRM.API.Configurates.Middlewares
 {
     public static class MiddlewarePipeline
     {

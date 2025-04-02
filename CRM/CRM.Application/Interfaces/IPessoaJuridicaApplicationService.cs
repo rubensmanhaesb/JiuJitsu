@@ -2,7 +2,7 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Domain.Entities;
 using RMB.Abstractions.Application;
-using RMB.Abstractions.Shared.Contracts.Responses;
+using RMB.Abstractions.Shared.Contracts.Paginations.Responses;
 
 namespace CRM.Application.Interfaces
 {

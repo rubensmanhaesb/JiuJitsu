@@ -2,8 +2,7 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using RMB.Abstractions.Shared.Contracts.Requests;
-
+using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
 
 namespace CRM.API.Controllers
 {

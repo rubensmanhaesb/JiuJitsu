@@ -3,7 +3,7 @@ using CRM.Infrastructure.Data.Context;
 using CRM.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using RMB.Core.UnitOfWork;
+using RMB.Core.Repositories.UnitOfWork;
 using System;
 using System.Threading.Tasks;
 
