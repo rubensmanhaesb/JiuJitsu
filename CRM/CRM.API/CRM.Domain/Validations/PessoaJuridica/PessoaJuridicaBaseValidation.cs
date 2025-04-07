@@ -1,6 +1,7 @@
 ﻿using CRM.Domain.Interfaces.Repositories;
 using FluentValidation;
 using RMB.Core.ValuesObjects.CNPJ.Helpers;
+using RMB.Core.ValuesObjects.Logradouro.Validations;
 using Empresa = CRM.Domain.Entities.PessoaJuridica;
 
 namespace CRM.Domain.Validations.PessoaJuridica
@@ -44,6 +45,12 @@ namespace CRM.Domain.Validations.PessoaJuridica
         public IRuleBuilderOptions<Empresa, Guid> ValidateIdIsUnique()
             => RuleFor(c => c.Id)
                 .MustAsync(IsExistsIdAsync).WithMessage("Id informado não está cadastrado.");
+
+
+        public IRuleBuilderOptions<Empresa, RMB.Core.ValuesObjects.Logradouro.Endereco> ValidateEndereco()
+              => RuleFor(c => c.Endereco)
+                  .NotNull().WithMessage("O endereço é obrigatório.")
+                  .SetValidator(new EnderecoValidation());
 
         private async Task<bool> IsExistsIdAsync(Guid id, CancellationToken cancellationToken)
         {

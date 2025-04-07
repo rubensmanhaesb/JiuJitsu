@@ -11,14 +11,14 @@ namespace CRM.Infrastructure.Repositories
 {
     public class UnitOfWork : BaseUnitOfWork, IUnitOfWork
     {
-        private readonly IDbContextFactory<DataContext> _contextFactory;
-        private readonly DataContext _datacontext;
-        public UnitOfWork(IDbContextFactory<DataContext> contextFactory) : this(contextFactory.CreateDbContext()) { }
+        private readonly IDbContextFactory<DbContext> _contextFactory;
 
-        private UnitOfWork(DataContext context) : base(context) {
-            _datacontext = context;
+        public UnitOfWork(IDbContextFactory<DbContext> factory) : base(factory) 
+        {
+            _contextFactory= factory;
         }
 
-        public IPessoaJuridicaRepository? PessoaJuridicaRepository => new PessoaJuridicaRepository(_datacontext);
+
+        public IPessoaJuridicaRepository? PessoaJuridicaRepository => new PessoaJuridicaRepository(_contextFactory);
     }
 }

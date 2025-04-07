@@ -12,12 +12,11 @@ namespace CRM.Infrastructure.Data.Extensions
     {
         public static IServiceCollection AddDataContext(this IServiceCollection services, IConfiguration configuration)
         {
-            //para o dapper
-          //  services.AddSingleton(provider =>
-          //      new SqlConnection(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContextFactory<DataContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IDbContextFactory<DbContext>, DbContextFactoryAdapter>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

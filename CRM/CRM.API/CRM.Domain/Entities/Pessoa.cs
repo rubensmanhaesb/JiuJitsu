@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RMB.Abstractions.Entities;
+﻿using RMB.Abstractions.Entities;
+using RMB.Core.ValuesObjects.Logradouro;
 
 namespace CRM.Domain.Entities
 {
@@ -11,6 +7,7 @@ namespace CRM.Domain.Entities
     {
 
         public string Email { get; set; }
+        public Endereco Endereco { get; set; }
 
     }
 }

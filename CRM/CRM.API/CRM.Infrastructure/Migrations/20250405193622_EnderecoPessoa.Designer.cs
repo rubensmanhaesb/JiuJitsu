@@ -4,6 +4,7 @@ using CRM.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250405193622_EnderecoPessoa")]
+    partial class EnderecoPessoa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace CRM.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("CRM.Domain.Entities.PessoaJuridica", b =>
                 {
-                    b.OwnsOne("CRM.Domain.Entities.PessoaJuridica.Endereco#RMB.Core.ValuesObjects.Endereco.Endereco", "Endereco", b1 =>
+                    b.OwnsOne("RMB.Core.ValuesObjects.Endereco.Endereco", "Endereco", b1 =>
                         {
                             b1.Property<Guid>("PessoaJuridicaId")
                                 .HasColumnType("uniqueidentifier");

@@ -15,7 +15,7 @@ namespace CRM.Infrastructure.Data.Repositories
         BaseRepository<PessoaJuridica>,
         IPessoaJuridicaRepository
     {
-        public PessoaJuridicaRepository(DbContext context) : base(context)
+        public PessoaJuridicaRepository(IDbContextFactory<DbContext> factory) : base(factory)
         {
         }
 

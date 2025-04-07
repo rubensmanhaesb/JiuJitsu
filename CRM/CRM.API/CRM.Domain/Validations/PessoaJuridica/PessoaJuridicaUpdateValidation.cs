@@ -23,7 +23,8 @@ namespace CRM.Domain.Validations.PessoaJuridica
             ValidateCNPJ();
             ValidateId();
             ValidateIdIsUnique();
-                
+            ValidateEndereco();
+
         }
     }
 }

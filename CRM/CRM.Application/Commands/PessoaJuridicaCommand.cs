@@ -6,5 +6,7 @@ namespace CRM.Application.Commands
     {
         [Required(ErrorMessage = "Informe o id da Pessoa Jurídica.")]
         public Guid? Id { get; set; }
+
+        public EnderecoCommand Endereco { get; set; } = new();
     }
 }

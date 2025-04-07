@@ -1,7 +1,6 @@
 ﻿using CRM.API.Extensions;
 using RMB.Core.Logs.Middleware;
 using RMB.Core.Middleware;
-using RMB.Responses.Middlewares.Controllers;
 using Scalar.AspNetCore;
 
 namespace CRM.API.Configurates.Middlewares

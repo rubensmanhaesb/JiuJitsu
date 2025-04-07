@@ -19,7 +19,44 @@ namespace CRM.Infrastructure.Data.Mappings
 
             //campos de pessoa
             builder.Property(p => p.Email).IsRequired().HasMaxLength(100);
-            
+            //endereço
+            builder.OwnsOne(p => p.Endereco, endereco =>
+            {
+
+                endereco.Property(e => e.Cep)
+                    .HasColumnName("Cep")
+                    .HasMaxLength(10);
+
+                endereco.Property(e => e.Logradouro)
+                    .HasColumnName("Logradouro")
+                    .HasMaxLength(100);
+
+                endereco.Property(e => e.Numero)
+                    .HasColumnName("Numero")
+                    .HasMaxLength(20);
+
+                endereco.Property(e => e.Complemento)
+                    .HasColumnName("Complemento")
+                    .HasMaxLength(100);
+
+                endereco.Property(e => e.Bairro)
+                    .HasColumnName("Bairro")
+                    .HasMaxLength(60);
+
+                endereco.Property(e => e.Localidade)
+                    .HasColumnName("Localidade")
+                    .HasMaxLength(60);
+
+                endereco.Property(e => e.Uf)
+                    .HasColumnName("Uf")
+                    .HasMaxLength(2);
+
+                endereco.Property(e => e.Ibge)
+                    .HasColumnName("Ibge")
+                    .HasMaxLength(10);
+            });
+
+
             //campos de pessoa jurídica
             builder.Property(p => p.RazaoSocial).IsRequired().HasMaxLength(100);
             builder.Property(p => p.NomeFantasia).IsRequired().HasMaxLength(100);
@@ -27,7 +64,6 @@ namespace CRM.Infrastructure.Data.Mappings
 
             builder.HasDiscriminator<string>("TipoPessoa")
                 .HasValue<PessoaJuridica>("PessoaJuridica");
-                //.HasValue<PessoaFisica>("PessoaFisica");
 
 
         }

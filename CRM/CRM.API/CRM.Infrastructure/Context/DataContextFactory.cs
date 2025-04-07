@@ -7,11 +7,16 @@ using System.IO;
 
 namespace CRM.Infrastructure.Data.Context
 {
-    public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
+    /// <summary>
+    /// verificar se pode ser retirada do fonte
+    /// </summary>
+    public class DataContextFactory //: IDesignTimeDbContextFactory<DataContext>
     {
-        public DataContext CreateDbContext(string[] args)
+        public void CreateDbContext(string[] args)
+        //public DataContext CreateDbContext(string[] args)
+
         {
-            //Debugger.Launch(); //faz o debug na migration
+            /*//Debugger.Launch(); //faz o debug na migration
             string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
             var basePath = Directory.GetCurrentDirectory();
 
@@ -30,8 +35,9 @@ namespace CRM.Infrastructure.Data.Context
             }
 
             optionsBuilder.UseSqlServer(connectionString);
-
-            return new DataContext(optionsBuilder.Options);
+            */
+            //return new DataContext(optionsBuilder.Options);
+            
         }
     }
 }

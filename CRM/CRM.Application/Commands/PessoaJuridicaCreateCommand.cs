@@ -25,7 +25,8 @@ namespace CRM.Application.Commands
 
         [Required(ErrorMessage = "Email é obrigatório.")]
         [EmailAddress(ErrorMessage = "Email inválido.")]
-        public string? email { get; set; }
+        public string? Email { get; set; }
 
+        public EnderecoCommand Endereco { get; set; } = new();
     }
 }
