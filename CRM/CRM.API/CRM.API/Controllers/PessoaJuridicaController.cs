@@ -3,7 +3,6 @@ using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
-using RMB.Core.ValuesObjects.Logradouro;
 
 namespace CRM.API.Controllers
 {
@@ -23,16 +22,6 @@ namespace CRM.API.Controllers
         [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status201Created)]
         public async Task<IActionResult> Post(PessoaJuridicaCreateCommand command, CancellationToken cancellationToken = default)
         {
-            var viaCep = new ViaCepService();
-            var endereco = await viaCep.GetCepAsync(command.Endereco.Cep!, cancellationToken);
-            //
-            command.Endereco.Cep = endereco.Cep;
-            command.Endereco.Logradouro = endereco.Logradouro;
-            command.Endereco.Bairro = endereco.Bairro;
-            command.Endereco.Localidade = endereco.Localidade;
-            command.Endereco.Uf = endereco.Uf;
-            command.Endereco.Ibge = endereco.Ibge;
-            //
             var dto = await _pessoaJuridicaApplicationService!.AddAsync(command, cancellationToken);
             return StatusCode(201, dto);
         }
