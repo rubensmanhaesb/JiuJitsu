@@ -1,0 +1,13 @@
+<!-- Adicione o [formGroup] aqui -->
+<div [formGroup]="parentForm">
+    <div formArrayName="phones">
+        <div *ngFor="let phone of phones.controls; let i = index" [formGroupName]="i"
+            class="d-flex align-items-center mb-2">
+            <input type="text" formControlName="number" class="form-control me-2" placeholder="Phone number"
+                mask="(00) 00000-0000" />
+            <button type="button" class="btn btn-danger btn-sm" (click)="removePhone(i)">Remove</button>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-sm" (click)="addPhone()">+ Add phone</button>
+    </div>
+</div>

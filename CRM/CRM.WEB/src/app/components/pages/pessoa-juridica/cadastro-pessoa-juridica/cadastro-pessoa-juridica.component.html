@@ -1,0 +1,113 @@
+<!-- Modal Cadastro -->
+<div class="modal fade" id="cadastrarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Cadastro de Tarefa
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="fechar()"></button>
+            </div>
+            <div>
+                <div class="p-4">
+                    <!-- Nav Tabs -->
+                    <ul class="nav nav-tabs" id="myTabInsert" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tabInsert" data-bs-toggle="tab"
+                                data-bs-target="#homeInsert" type="button" role="tab" aria-controls="homeInsert"
+                                aria-selected="true">
+                                Geral
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tabInsert" data-bs-toggle="tab"
+                                data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                aria-selected="false">
+                                Endereço
+                            </button>
+                        </li>
+                    </ul>
+                    <!-- Tab Content -->
+                    <div class="tab-content mt-3" id="myTabInsertContent">
+
+                        <div class="tab-pane fade show active" id="homeInsert" role="tabpanel"
+                            aria-labelledby="home-tabInsert">
+                            <div class="modal-body">
+                                <div class="container mt-3">
+                                    <div *ngIf="mensagem" class="alert alert-primary alert-dismissible fade show"
+                                        role="alert">
+                                        <strong>{{mensagem}}</strong>
+                                        <button (click)="mensagem = ''" type="button" class="btn-close"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <form id="formEmpresa" [formGroup]="form" (ngSubmit)="salvar()">
+                                        <!-- Linha 1: Razão Social + Nome Fantasia -->
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="txtRazaoSocial">Razão Social:</label>
+                                                <input id="txtRazaoSocial" type="text" class="form-control"
+                                                    formControlName="razaoSocial" />
+                                                <div class="text-danger"
+                                                    *ngIf="f['razaoSocial'].touched && f['razaoSocial'].invalid">
+                                                    Por favor, informe o nome da tarefa com pelo menos 2 caracteres.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="txtNomeFantasia">Nome Fantasia:</label>
+                                                <input id="txtNomeFantasia" type="text" class="form-control"
+                                                    formControlName="nomeFantasia" />
+                                                <div class="text-danger"
+                                                    *ngIf="f['nomeFantasia'].touched && f['nomeFantasia'].invalid">
+                                                    Por favor, informe o nome da tarefa com pelo menos 2 caracteres.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Linha 2: Email + Telefones -->
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="txtEmail">Email:</label>
+                                                <input id="txtEmail" type="text" class="form-control"
+                                                    formControlName="email" />
+                                                <div class="text-danger"
+                                                    *ngIf="f['email'].touched && f['email'].invalid">
+                                                    Por favor, informe um email válido.
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Telefones:</label>
+                                                <app-phone-list [phones]="phones" [parentForm]="form"></app-phone-list>
+                                                <div class="text-danger mt-1"
+                                                    *ngIf="phones.errors?.['minimoUmTelefone'] && (phones.touched || submitted)">
+                                                    Informe pelo menos um telefone.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tabInsert">
+                            <div class="modal-body">
+                                <div class="container mt-3">
+                                    <app-endereco-form [parentForm]="form"></app-endereco-form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center gap-2">
+                        <button type="submit" class="btn btn-secondary" [disabled]="form.invalid"
+                            form="formEmpresa">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            (click)="fechar()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<nav>
+    <ul class="pagination pagination-sm mb-0">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+            <button class="page-link" (click)="prevPage()">Anterior</button>
+        </li>
+
+        <li *ngFor="let page of pages" class="page-item" [class.active]="page === currentPage">
+            <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <button class="page-link" (click)="nextPage()">Próxima</button>
+        </li>
+    </ul>
+</nav>
