@@ -39,6 +39,15 @@ services:
     networks:
       - mynetwork
 
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog_container_jiujitsu
+    ports:
+      - "1025:1025" 
+      - "8025:8025" 
+    restart: always
+    networks:
+      - mynetwork
       
 volumes:
   sqlserver_data:

@@ -2,8 +2,7 @@
 using CRM.Domain.MongoDB.Collection.Logs;
 using CRM.Domain.MongoDB.Interfaces.Services;
 using MediatR;
-using RMB.Abstractions.Notifications;
-
+using RMB.Abstractions.Handlers.Notifications;
 
 namespace CRM.Application.Handlers.Notifications
 {

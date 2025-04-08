@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\RMB\RMB.Abstractions\RMB.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\RMB\RMB.Infrastructure\RMB.Infrastructure.Messages\RMB.Infrastructure.Messages.csproj" />
     <ProjectReference Include="..\..\CRM.Application\CRM.Application.csproj" />
     <ProjectReference Include="..\..\CRM.Domani.MongoDB\CRM.Domain.MongoDB.csproj" />
     <ProjectReference Include="..\..\CRM.Infrastructure.Storage\CRM.Infrastructure.Storage.csproj" />

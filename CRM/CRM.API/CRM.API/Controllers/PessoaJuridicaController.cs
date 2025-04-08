@@ -2,7 +2,9 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using RMB.Abstractions.Infrastructure.Messages;
 using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
+using RMB.Infrastructure.Messages.Producer;
 
 namespace CRM.API.Controllers
 {
@@ -11,10 +13,12 @@ namespace CRM.API.Controllers
     public class PessoaJuridicaController : ControllerBase
     {
         private readonly IPessoaJuridicaApplicationService? _pessoaJuridicaApplicationService;
+        private readonly IMailMessageProducer? _mail;
 
-        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService)
+        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService, IMailMessageProducer mail)
         {
             _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
+            _mail = mail;
 
         }
 
@@ -54,6 +58,7 @@ namespace CRM.API.Controllers
         [ProducesResponseType(typeof(List<PessoaJuridicaDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllPaginated([FromQuery] PaginationRequest pagination, CancellationToken cancellationToken = default)
         {
+            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "rubensmanhaesb@hotmail.com" });
 
             var resultado = await _pessoaJuridicaApplicationService.GetPaginatedAsync<PessoaJuridicaDto>(
                 predicate: null,
@@ -62,7 +67,6 @@ namespace CRM.API.Controllers
             );
 
             return Ok(resultado);
-
         }
 
         [HttpGet("{id}")]

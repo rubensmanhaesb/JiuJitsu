@@ -1,7 +1,6 @@
 ﻿using CRM.Application.Dtos.PessoaJuridica;
 using MediatR;
-using RMB.Abstractions.Notifications;
-
+using RMB.Abstractions.Handlers.Notifications;
 
 namespace CRM.Application.Handlers.Notifications
 {

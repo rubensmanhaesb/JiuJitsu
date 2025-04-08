@@ -5,6 +5,7 @@ using CRM.Infrastructure.Storage.Extensions;
 using CRM.Domain.MongoDB.Extensions;
 using RMB.Core.Extensions;
 using CRM.API.Extensions;
+using RMB.Infrastructure.Messages.Extensions;
 
 namespace CRM.API.Configurates.Services
 {
@@ -20,6 +21,7 @@ namespace CRM.API.Configurates.Services
             services.AddMongoDb(configuration);
             services.AddDomainMongoDb();
             services.AddCorsConfig(configuration);
+            services.AddMailMessages();
             #endregion 
 
         }
