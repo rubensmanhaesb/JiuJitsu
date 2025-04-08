@@ -58,8 +58,6 @@ namespace CRM.API.Controllers
         [ProducesResponseType(typeof(List<PessoaJuridicaDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllPaginated([FromQuery] PaginationRequest pagination, CancellationToken cancellationToken = default)
         {
-            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "rubensmanhaesb@hotmail.com" });
-
             var resultado = await _pessoaJuridicaApplicationService.GetPaginatedAsync<PessoaJuridicaDto>(
                 predicate: null,
                 paginationRequest: pagination,

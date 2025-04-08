@@ -14,7 +14,7 @@ namespace CRM.Infrastructure.Data.Mappings
         public void Configure(EntityTypeBuilder<ConfirmacaoEmail> builder)
         {
 
-            builder.ToTable("ConfirmacoesEmail");
+            builder.ToTable("ConfirmacaoEmail");
 
             builder.HasKey(x => x.Id);
 
