@@ -71,6 +71,15 @@ namespace CRM.API.Controllers
         [ProducesResponseType(typeof(PessoaJuridicaDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
             =>Ok(await _pessoaJuridicaApplicationService.GetByIdAsync(id, cancellationToken));
+        
+        [HttpGet("Mail_teste")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Mail_teste(CancellationToken cancellationToken = default)
+        {
+            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "anabernardes@hotmail.com" });
+
+            return Ok();
+        }
 
     }
 }
