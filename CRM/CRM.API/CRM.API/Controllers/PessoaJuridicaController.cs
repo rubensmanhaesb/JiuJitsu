@@ -3,6 +3,8 @@ using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using RMB.Abstractions.Infrastructure.Messages;
+using RMB.Abstractions.Infrastructure.Messages.Entities;
+using RMB.Abstractions.Infrastructure.Messages.Interfaces;
 using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
 using RMB.Infrastructure.Messages.Producer;
 
