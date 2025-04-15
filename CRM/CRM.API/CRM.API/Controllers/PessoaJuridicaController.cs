@@ -2,11 +2,9 @@
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using RMB.Abstractions.Infrastructure.Messages;
 using RMB.Abstractions.Infrastructure.Messages.Entities;
 using RMB.Abstractions.Infrastructure.Messages.Interfaces;
 using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
-using RMB.Infrastructure.Messages.Producer;
 
 namespace CRM.API.Controllers
 {
@@ -15,13 +13,12 @@ namespace CRM.API.Controllers
     public class PessoaJuridicaController : ControllerBase
     {
         private readonly IPessoaJuridicaApplicationService? _pessoaJuridicaApplicationService;
-        private readonly IMailMessageProducer? _mail;
+        private readonly IMessageProducer? _mail;
 
-        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService, IMailMessageProducer mail)
+        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService, IMessageProducer mail)
         {
             _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
             _mail = mail;
-
         }
 
         [HttpPost]
@@ -78,7 +75,8 @@ namespace CRM.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Mail_teste(CancellationToken cancellationToken = default)
         {
-            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "anabernardes@hotmail.com" });
+
+            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "anabernardes-hotmail.com" });
 
             return Ok();
         }

@@ -17,7 +17,7 @@ namespace CRM.API.Configurates.Services
             services.AddCoreExtensions(configuration);
             services.AddDataContext(configuration);
             services.AddDomainServices();
-            services.AddApplicationServices();
+            services.AddApplicationServices(configuration);
             services.AddMongoDb(configuration);
             services.AddDomainMongoDb();
             services.AddCorsConfig(configuration);

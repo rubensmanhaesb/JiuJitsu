@@ -13,7 +13,6 @@ namespace CRM.Domain.Extensions
         {
             services.AddTransient<IPessoaJuridicaDomainService, PessoaJuridicaDomainService>();
             services.AddValidatorsFromAssembly(typeof(PessoaJuridicaBaseValidation).Assembly);
-            //services.AddFluentValidationAutoValidation();
 
             return services;
         }

@@ -1,6 +1,5 @@
 ﻿using CRM.API.Extensions;
 using RMB.Core.Logs.Middleware;
-using RMB.Core.Middlewares;
 using Scalar.AspNetCore;
 
 namespace CRM.API.Configurates.Middlewares
@@ -20,7 +19,6 @@ namespace CRM.API.Configurates.Middlewares
             app.UseMiddleware<CorrelationIdMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseMiddleware<RequestResponseLoggingMiddleware>();
-            app.UseMiddleware<ValidationExceptionMiddleware>();
             #endregion
 
             #region App Extensions
