@@ -36,19 +36,16 @@ namespace CRM.Application.Services
         {
             var result = await _addInner.AddAsync(command, cancellationToken);
 
-            var token = Guid.NewGuid().ToString();
-
             var email = new EmailConfirmationMessage
             {
+                Id = result.Id,
                 ToEmail = result.Email,
                 ToName = result.NomeFantasia,
-                ConfirmationLink = token,
                 Subject = "Confirmação de Cadastro",
                 Body = _templateBuilder.GenerateConfirmationEmailBody(new EmailConfirmationMessage
                 {
                     ToEmail = result.Email,
                     ToName = result.NomeFantasia,
-                    ConfirmationLink = token
                 })
             };
 
@@ -71,15 +68,14 @@ namespace CRM.Application.Services
 
                 var email = new EmailConfirmationMessage
                 {
+                    Id = result.Id,
                     ToEmail = result.Email,
                     ToName = result.NomeFantasia,
-                    ConfirmationLink = token,
                     Subject = "Confirmação de Alteração de E-mail",
                     Body = _templateBuilder.GenerateConfirmationEmailBody(new EmailConfirmationMessage
                     {
                         ToEmail = result.Email,
                         ToName = result.NomeFantasia,
-                        ConfirmationLink = token
                     })
                 };
 

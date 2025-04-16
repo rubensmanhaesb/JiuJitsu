@@ -1,13 +1,7 @@
 ﻿using CRM.Application.Settings;
-using CRM.Domain.Entities;
 using Microsoft.Extensions.Options;
 using RMB.Abstractions.Infrastructure.Messages.Entities;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CRM.Application.Services.Email
 {
@@ -22,7 +16,7 @@ namespace CRM.Application.Services.Email
 
         public string GenerateConfirmationEmailBody(EmailConfirmationMessage message)
         {
-            var link = $"{_settings.ConfirmationLinkBaseUrl}?token={message.ConfirmationLink}";
+            var link = $"{_settings.ConfirmationLinkBaseUrl}";
             return @$"
             <div>
                 <p>Olá{(!string.IsNullOrEmpty(message.ToName) ? $", {message.ToName}" : "")},</p>

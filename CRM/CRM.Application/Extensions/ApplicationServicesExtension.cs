@@ -5,11 +5,10 @@ using CRM.Application.Interfaces;
 using CRM.Application.Services;
 using CRM.Application.Services.Email;
 using CRM.Application.Settings;
-using CRM.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RMB.Abstractions.Application;
-using RMB.Abstractions.Infrastructure.Messages.Interfaces;
+
 
 
 namespace CRM.Application.Extensions
@@ -31,7 +30,10 @@ namespace CRM.Application.Extensions
             #region Email
             services.Configure<EmailTemplateSettings>(configuration.GetSection("EmailTemplate"));
             services.AddScoped<EmailTemplateBuilder>();
+            services.AddScoped<EmailConfirmationService>();
+
             services.AddSingleton<MessageErrorHandler>();
+            services.AddSingleton<MessageSuccessfulHandler>();
             #endregion Email
 
             #region Scrutor - Decorator Pessoa Jurídica

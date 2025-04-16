@@ -1,9 +1,8 @@
 ﻿using CRM.Application.Commands;
 using CRM.Application.Dtos.PessoaJuridica;
 using CRM.Application.Interfaces;
+using CRM.Application.Services.Email;
 using Microsoft.AspNetCore.Mvc;
-using RMB.Abstractions.Infrastructure.Messages.Entities;
-using RMB.Abstractions.Infrastructure.Messages.Interfaces;
 using RMB.Abstractions.Shared.Contracts.Paginations.Requests;
 
 namespace CRM.API.Controllers
@@ -13,12 +12,12 @@ namespace CRM.API.Controllers
     public class PessoaJuridicaController : ControllerBase
     {
         private readonly IPessoaJuridicaApplicationService? _pessoaJuridicaApplicationService;
-        private readonly IMessageProducer? _mail;
+        private readonly EmailConfirmationService _emailConfirmationService;
 
-        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService, IMessageProducer mail)
+        public PessoaJuridicaController(IPessoaJuridicaApplicationService pessoaJuridicaApplicationService, EmailConfirmationService emailConfirmationService)
         {
             _pessoaJuridicaApplicationService = pessoaJuridicaApplicationService;
-            _mail = mail;
+            _emailConfirmationService = emailConfirmationService;
         }
 
         [HttpPost]
@@ -76,7 +75,7 @@ namespace CRM.API.Controllers
         public async Task<IActionResult> Mail_teste(CancellationToken cancellationToken = default)
         {
 
-            await _mail!.PublishEmailConfirmationAsync(new EmailConfirmationMessage { ConfirmationLink = "https://example.com/confirm", ToEmail = "anabernardes-hotmail.com" });
+            _emailConfirmationService.SendAsync("ana@hotmail.com", Guid.NewGuid());
 
             return Ok();
         }
